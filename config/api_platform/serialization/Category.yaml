@@ -1,0 +1,18 @@
+App\Entity\Category:
+  attributes:
+    id:
+      groups: ['category_read']
+    name:
+      groups: ['category_read', 'category_post', 'category_put']
+    description:
+      groups: ['category_read', 'category_post', 'category_put']
+    image:
+      groups: ['category_read', 'category_post', 'category_put']
+    isActive:
+      groups: ['category_read', 'category_post', 'category_put']
+    subCategory:
+      groups: ['category_read', 'category_post', 'category_put']
+    createdAt:
+      groups: ['category_read']
+    updatedAt:
+      groups: ['category_read']

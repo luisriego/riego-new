@@ -1,0 +1,18 @@
+App\Entity\SubCategory:
+  attributes:
+    id:
+      groups: ['subcat_read']
+    name:
+      groups: ['subcat_read', 'subcat_post', 'subcat_put']
+    description:
+      groups: ['subcat_read', 'subcat_post', 'subcat_put']
+    image:
+      groups: ['subcat_read', 'subcat_post', 'subcat_put']
+    isActive:
+      groups: ['subcat_read', 'subcat_post', 'subcat_put']
+    category:
+      groups: ['subcat_read', 'subcat_post', 'subcat_put']
+    createdAt:
+      groups: ['subcat_read']
+    updatedAt:
+      groups: ['subcat_read']

@@ -1,0 +1,47 @@
+App\Entity\Image:
+  attributes:
+    normalization_context:
+      groups: ['image_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("IMAGE_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("IMAGE_CREATE")'
+      denormalization_context:
+        groups: ['image_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  url:
+                    type: string
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("IMAGE_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("IMAGE_UPDATE", object)'
+      denormalization_context:
+        groups: ['image_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  url:
+                    type: string
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("IMAGE_DELETE", object)'

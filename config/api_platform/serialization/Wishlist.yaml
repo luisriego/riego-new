@@ -1,0 +1,8 @@
+App\Entity\Wishlist:
+  attributes:
+    id:
+      groups: ['wishlist_read']
+    user:
+      groups: ['wishlist_read', 'wishlist_post', 'wishlist_put']
+#    product:
+#      groups: ['wishlist_read', 'wishlist_post', 'wishlist_put']

@@ -1,0 +1,16 @@
+App\Entity\Image:
+  attributes:
+    id:
+      groups: ['image_read']
+    name:
+      groups: ['image_read', 'image_post', 'image_put']
+    url:
+      groups: ['image_read', 'image_post', 'image_put']
+    alt:
+      groups: ['image_read', 'image_post', 'image_put']
+    heigth:
+      groups: ['image_read', 'image_post', 'image_put']
+    width:
+      groups: ['image_read', 'image_post', 'image_put']
+    ratio:
+      groups: ['image_read', 'image_post', 'image_put']

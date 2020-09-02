@@ -1,0 +1,29 @@
+App\Entity\Product:
+  attributes:
+    id:
+      groups: ['product_read']
+    name:
+      groups: ['product_read', 'product_post', 'product_put']
+    description:
+      groups: ['product_read', 'product_post', 'product_put']
+    cost:
+      groups: ['product_read', 'product_post', 'product_put']
+    price:
+      groups: ['product_read', 'product_post', 'product_put']
+    stock:
+      groups: ['product_read', 'product_post', 'product_put']
+    product:
+      groups: ['product_read', 'product_post', 'product_put']
+    isActive:
+      groups: ['product_read', 'product_post', 'product_put']
+    isHighlighted:
+      groups: ['product_read', 'product_post', 'product_put']
+    onCover:
+      groups: ['product_read', 'product_post', 'product_put']
+    heigth:
+      groups: ['product_read', 'product_post', 'product_put']
+    width:
+      groups: ['product_read', 'product_post', 'product_put']
+    ratio:
+      groups: ['product_read', 'product_post', 'product_put']
+

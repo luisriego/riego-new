@@ -1,0 +1,51 @@
+App\Entity\Category:
+  attributes:
+    normalization_context:
+      groups: ['category_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("CATEGORY_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("CATEGORY_CREATE")'
+      denormalization_context:
+        groups: ['category_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("CATEGORY_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("CATEGORY_UPDATE", object)'
+      denormalization_context:
+        groups: ['category_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  image:
+                    type: string
+                  isActive:
+                    type: boolean
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("CATEGORY_DELETE", object)'

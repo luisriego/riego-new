@@ -1,0 +1,12 @@
+App\Entity\Status:
+  attributes:
+    id:
+      groups: ['status_read']
+    name:
+      groups: ['status_read', 'status_post', 'status_put']
+    description:
+      groups: ['status_read', 'status_post', 'status_put']
+    isActive:
+      groups: ['status_read', 'status_post', 'status_put']
+    product:
+      groups: ['status_read', 'status_post', 'status_put']

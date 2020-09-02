@@ -1,0 +1,6 @@
+App\Entity\Tag:
+  attributes:
+    id:
+      groups: ['tag_read']
+    name:
+      groups: ['tag_read', 'tag_post', 'tag_put']

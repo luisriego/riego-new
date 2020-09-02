@@ -1,0 +1,53 @@
+App\Entity\SubCategory:
+  attributes:
+    normalization_context:
+      groups: ['subcat_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("SUBCAT_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("SUBCAT_CREATE")'
+      denormalization_context:
+        groups: ['subcat_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  category:
+                    type: string
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("SUBCAT_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("SUBCAT_UPDATE", object)'
+      denormalization_context:
+        groups: ['subcat_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  image:
+                    type: string
+                  isActive:
+                    type: boolean
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("SUBCAT_DELETE", object)'

@@ -1,0 +1,47 @@
+App\Entity\ShoppingCart:
+  attributes:
+    normalization_context:
+      groups: ['cart_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("CART_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("CART_CREATE")'
+      denormalization_context:
+        groups: ['cart_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+                  product:
+                    type: string
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("CART_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("CART_UPDATE", object)'
+      denormalization_context:
+        groups: ['cart_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+                  product:
+                    type: string
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("CART_DELETE", object)'

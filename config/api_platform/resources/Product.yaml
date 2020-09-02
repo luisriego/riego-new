@@ -1,0 +1,47 @@
+App\Entity\Product:
+  attributes:
+    normalization_context:
+      groups: ['product_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("PRODUCT_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("PRODUCT_CREATE")'
+      denormalization_context:
+        groups: ['product_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  cost:
+                    type: float
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("PRODUCT_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("PRODUCT_UPDATE", object)'
+      denormalization_context:
+        groups: ['product_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  cost:
+                    type: float
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("PRODUCT_DELETE", object)'

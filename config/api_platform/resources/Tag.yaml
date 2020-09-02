@@ -1,0 +1,43 @@
+App\Entity\Tag:
+  attributes:
+    normalization_context:
+      groups: ['tag_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("TAG_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("TAG_CREATE")'
+      denormalization_context:
+        groups: ['tag_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("TAG_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("TAG_UPDATE", object)'
+      denormalization_context:
+        groups: ['tag_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("TAG_DELETE", object)'

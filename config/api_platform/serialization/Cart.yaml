@@ -1,0 +1,8 @@
+App\Entity\SoppingCart:
+  attributes:
+    id:
+      groups: ['cart_read']
+    user:
+      groups: ['cart_read', 'cart_post', 'cart_put']
+    product:
+      groups: ['cart_read', 'cart_post', 'cart_put']

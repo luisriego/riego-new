@@ -1,0 +1,47 @@
+App\Entity\Wishlist:
+  attributes:
+    normalization_context:
+      groups: ['wishlist_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("WISHLIST_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("WISHLIST_CREATE")'
+      denormalization_context:
+        groups: ['wishlist_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+#                  product:
+#                    type: string
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("WISHLIST_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("WISHLIST_UPDATE", object)'
+      denormalization_context:
+        groups: ['wishlist_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: string
+#                  product:
+#                    type: string
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("WISHLIST_DELETE", object)'

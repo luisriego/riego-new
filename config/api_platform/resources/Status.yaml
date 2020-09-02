@@ -1,0 +1,49 @@
+App\Entity\Status:
+  attributes:
+    normalization_context:
+      groups: ['status_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("STATUS_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("STATUS_CREATE")'
+      denormalization_context:
+        groups: ['status_post']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("STATUS_READ", object)'
+    put:
+      method: 'PUT'
+      security: 'is_granted("STATUS_UPDATE", object)'
+      denormalization_context:
+        groups: ['status_put']
+      openapi_context:
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: text
+                  isActive:
+                    type: boolean
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("STATUS_DELETE", object)'
